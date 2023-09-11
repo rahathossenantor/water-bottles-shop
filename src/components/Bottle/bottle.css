@@ -1,0 +1,11 @@
+.bottle-card {
+    border: 1px solid violet;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 30%;
+}
+.bottle-card img {
+    display: inline-block;
+    width: 100%;
+}

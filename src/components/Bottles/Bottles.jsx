@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Bottle from "../Bottle/Bottle";
 
 const Bottles = () => {
     const [bottles, setBottles] = useState([]);
@@ -11,9 +12,14 @@ const Bottles = () => {
         })()
     }, [])
 
+    const addToCart = (product) => {
+        console.log(product);
+    }
+
     return (
-        <div>
-            <h2>Total bottles: {bottles.length}</h2>
+        <div className="bottles-container">
+            {/* <h2>Total bottles: {bottles.length}</h2> */}
+            {bottles.map((bottle, id) => <Bottle key={id} bottle={bottle} addToCart={addToCart}></Bottle>)}
         </div>
     );
 };
