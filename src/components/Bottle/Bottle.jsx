@@ -1,4 +1,5 @@
-import "./bottle.css"
+import "./bottle.css";
+
 const Bottle = ({bottle, addToCart}) => {
     const {name, img, price} = bottle;
     return (
