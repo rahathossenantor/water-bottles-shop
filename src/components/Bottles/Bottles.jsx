@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Bottle from "../Bottle/Bottle";
+import { addDataToCart, getStoredData } from "../../utilities/localStorage";
 
 const Bottles = () => {
     const [bottles, setBottles] = useState([]);
@@ -17,7 +18,23 @@ const Bottles = () => {
 
     const addToCart = (product) => {
         setCartItem([...cartItem, product]);
+        addDataToCart(product.id);
     }
+
+    useEffect(() => {
+        if (bottles.length) {
+            const cartProducts = getStoredData();
+
+            const cartBottles = [];
+            for (const id of cartProducts) {
+                const products = bottles.find(product => product.id === id);
+                if (products) {
+                    cartBottles.push(products);
+                }
+            }
+            setCartItem(cartBottles);
+        }
+    }, [bottles])
 
     return (
         <div>
